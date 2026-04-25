@@ -1,0 +1,14 @@
+{
+  "projectName": "url-shortner-api",
+  "projectType": "lite",
+  "controllersPath": "src/controllers",
+  "database": false,
+  "auth": false,
+  "routes": [
+    {
+      "domain": "health",
+      "routeBasePath": "/health"
+    }
+  ],
+  "customMiddlewares": null
+}

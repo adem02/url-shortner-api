@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // Permet d'utiliser les fonctionnalités les plus récentes supportées par Node.js 18.
+    "module": "commonjs", // Standard pour Node.js.
+    "rootDir": ".", // Le répertoire racine des fichiers sources.
+    "outDir": "build", // Le répertoire de sortie pour les fichiers compilés.
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "strict": true, // Active toutes les vérifications strictes pour un typage sécurisé
+    "noImplicitAny": true, // Erreur si un type implicite `any` est utilisé
+    "strictNullChecks": true, // Prend en compte `null` et `undefined`
+    "strictBindCallApply": true, // Vérifie les arguments des méthodes bind/call/apply
+    "strictFunctionTypes": true, // Vérifie la compatibilité des types dans les fonctions
+    "strictPropertyInitialization": true, // S'assure que les propriétés de classe sont initialisées
+    "noUnusedLocals": true, // Signale les variables inutilisées
+    "noUnusedParameters": true, // Signale les paramètres inutilisés
+    "noImplicitReturns": true, // Vérifie qu'une fonction retourne une valeur dans tous les cas
+    "noFallthroughCasesInSwitch": true, // Empêche les cas `switch` de tomber à travers
+    "esModuleInterop": true, // Assure la compatibilité avec les modules CommonJS
+    "experimentalDecorators": true, // Support pour les décorateurs TypeScript
+    "emitDecoratorMetadata": true, // Génère les métadonnées pour les décorateurs (important pour l'injection de dépendances)
+    "forceConsistentCasingInFileNames": true, // Vérifie la casse des noms de fichiers
+    "noImplicitOverride": true, // Exige que les méthodes surchargées soient explicitement marquées
+    "allowSyntheticDefaultImports": true, // Permet l'importation par défaut synthétique
+    "useDefineForClassFields": true, // Utilise `define` pour les champs de classe (aligné sur ES2022)
+    "skipLibCheck": true, // Ignore les vérifications des types des bibliothèques
+    "resolveJsonModule": true // Permet l'importation de fichiers JSON
+  },
+  "include": [
+    "src/**/*.ts",
+    "migrations/**/*.ts"
+  ], // Inclut tous les fichiers dans le répertoire src.
+  "exclude": [
+    "node_modules",
+    "build",
+    "**/*.test.ts"
+   ]
+}
