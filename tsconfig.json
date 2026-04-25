@@ -35,5 +35,8 @@
     "node_modules",
     "build",
     "**/*.test.ts"
-   ]
+  ],
+  "_moduleAliases": {
+    "@": "build/src"
+  }
 }
