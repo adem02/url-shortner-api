@@ -19,3 +19,8 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# DB
+*.sqlite
+*.db
+src/migrations/

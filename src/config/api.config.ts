@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const ApiConfig = {
+  isDevMode: process.env.NODE_ENV === 'development',
+  isProduction: process.env.NODE_ENV === 'production',
   port: Number(process.env.PORT) || 3000,
   environment: process.env.NODE_ENV || 'development',
   cors: {
@@ -12,4 +14,11 @@ export const ApiConfig = {
   logging: {
     level: process.env.LOG_LEVEL || 'debug',
   },
+  dbConfig: {
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT) || 5432,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  }
 };
