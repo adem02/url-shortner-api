@@ -34,7 +34,7 @@ services:
       target: builder
     container_name: url-shortner-backend
     restart: unless-stopped
-    command: ["npm", "run", "dev"]
+    command: sh -c "npm run migration:run && npm run dev"
     environment:
       NODE_ENV: development
       PORT: 3000
@@ -43,12 +43,14 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
-      REDIS_URL: redis://redis:6379
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
       CORS_ORIGIN: "*"
     ports:
       - "3000:3000"
     volumes:
       - ./:/app/
+      - /app/node_modules
     depends_on:
       postgres:
         condition: service_healthy

@@ -5,4 +5,4 @@ export const GetApiHealthController = async (_: Request, res: Response): Promise
     status: 'UP',
     name: 'lite_route',
   });
-}
+};

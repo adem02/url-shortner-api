@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { GetApiHealthController } from '@/controllers/health/health.controller'
+import { GetApiHealthController } from '@/controllers/health/health.controller';
 
 const router = Router();
 
