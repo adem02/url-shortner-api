@@ -1,43 +1,39 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { Link } from "./Links";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Link } from './Links';
 
-@Entity({name: 'clicks'})
+@Entity({ name: 'clicks' })
 export class Click {
-  @PrimaryColumn({type: 'uuid'})
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @ManyToOne(() => Link, (link) => link.clicks, {
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({name: 'link_id'})
+  @JoinColumn({ name: 'link_id' })
   @Index()
   link!: Link;
 
   @Column({
     type: 'varchar',
     length: 2,
-    nullable: true
+    nullable: true,
   })
-  country!: string|null;
+  country!: string | null;
 
   @Column({
     type: 'varchar',
     length: 20,
-    nullable: true
+    nullable: true,
   })
-  device!: string|null;
+  device!: string | null;
 
-  @Column(
-    {type: 'varchar',
-    length: 50,
-    nullable: true
-  })
-  browser!: string|null;
+  @Column({ type: 'varchar', length: 50, nullable: true })
+  browser!: string | null;
 
   @Column({
     name: 'clicked_at',
     type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP'
+    default: () => 'CURRENT_TIMESTAMP',
   })
   clickedAt!: Date;
 }

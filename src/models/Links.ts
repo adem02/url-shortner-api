@@ -1,9 +1,9 @@
-import { Column, Entity, Index, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Click } from './Clicks';
 
-@Entity({name: 'links'})
+@Entity({ name: 'links' })
 export class Link {
-  @PrimaryColumn({type: 'uuid'})
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column({
@@ -15,14 +15,15 @@ export class Link {
   code!: string;
 
   @Column({
-    type: 'text'
+    name: 'long_url',
+    type: 'text',
   })
   longUrl!: string;
 
   @Column({
     name: 'created_at',
     type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP'
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt!: Date;
 
