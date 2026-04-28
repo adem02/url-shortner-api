@@ -5,4 +5,6 @@ export enum ApiErrorCode {
   NotFound = 404,
   UnprocessableEntity = 422,
   TooManyRequests = 429,
+
+  ServiceUnavailable = 503,
 }

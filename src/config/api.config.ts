@@ -25,4 +25,5 @@ export const ApiConfig = {
     port: process.env.REDIS_PORT,
     host: process.env.REDIS_HOST,
   },
+  baseUrl: process.env.BASE_URL || 'http://localhost:3000',
 };
