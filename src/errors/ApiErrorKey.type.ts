@@ -7,4 +7,13 @@ export type ApiErrorKey =
   | 'internal/unknown'
 
   // Validation
-  | 'validation/failed';
+  | 'validation/failed'
+
+  // Security
+  | 'security/rate-limit-exceeded'
+
+  // Resource
+  | 'resource/not-found'
+
+  // Servie
+  | 'link/code-generation-failed';
