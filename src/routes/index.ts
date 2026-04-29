@@ -1,10 +1,12 @@
 import { Router } from 'express';
-import shortnerRoutes from './shortner.routes';
+import clickRoutes from './click.routes';
+import linkRoutes from './link.routes';
 import { GetApiHealthController } from '@/controllers/health/health.controller';
 
 const router = Router();
 
-router.get('/health', GetApiHealthController);
-router.use('/shorten', shortnerRoutes);
+router.get('/api/health', GetApiHealthController);
+router.use('/api', linkRoutes);
+router.use('/', clickRoutes);
 
 export default router;

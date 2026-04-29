@@ -22,8 +22,7 @@ export const ApiConfig = {
     database: process.env.DB_NAME,
   },
   redis: {
-    port: process.env.REDIS_PORT,
-    host: process.env.REDIS_HOST,
+    url: process.env.REDIS_URL || 'redis://localhost:6379',
   },
   baseUrl: process.env.BASE_URL || 'http://localhost:3000',
 };

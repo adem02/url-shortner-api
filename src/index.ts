@@ -7,9 +7,13 @@ import Logger from './config/logger.config';
 import { ErrorHandlerMiddleware } from './middlewares/error-handler.middleware';
 import { AppDataSource } from './config/data-source';
 import { connectRedis } from './config/redis.config';
+import { queueService } from './services/queue-service';
+import { handlerRegistry } from './handlers/registry';
 
 const app = express();
 const PORT = ApiConfig.port;
+
+app.set('trust proxy', 1);
 
 app.use(express.json());
 app.use(
@@ -21,7 +25,7 @@ app.use(
 );
 app.use(httpLogger);
 
-app.use('/api', routes);
+app.use('/', routes);
 
 app.use(ErrorHandlerMiddleware);
 
@@ -31,6 +35,13 @@ app.use(ErrorHandlerMiddleware);
     Logger.info('Data Source has been initialized!');
 
     await connectRedis();
+
+    handlerRegistry.forEach(({ type, handler }) => {
+      queueService.registerHandler(type, handler);
+    });
+    queueService
+      .startConsumer()
+      .catch((err) => Logger.error('Failed to start queue consumer:', err));
 
     app.listen(PORT, () => {
       Logger.info(`API Listening on port ${PORT}`);

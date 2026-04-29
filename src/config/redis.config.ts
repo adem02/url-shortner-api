@@ -2,9 +2,9 @@ import Redis from 'ioredis';
 import { ApiConfig } from './api.config';
 import Logger from './logger.config';
 
-const { host, port } = ApiConfig.redis;
+const { url } = ApiConfig.redis;
 
-export const redis = new Redis(Number(port) || 6379, host || 'redis', {
+export const redis = new Redis(url, {
   lazyConnect: true,
   maxRetriesPerRequest: 3,
 });

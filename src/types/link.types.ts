@@ -20,3 +20,10 @@ export interface CreateLinkData {
   longUrl: string;
   createAt: Date;
 }
+
+export interface Link {
+  id: string;
+  code: string;
+  longUrl: string;
+  createdAt: Date;
+}

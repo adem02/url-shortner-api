@@ -7,11 +7,15 @@
   "routes": [
     {
       "domain": "health",
-      "routeBasePath": "/health"
+      "routeBasePath": "api/health"
     },
     {
       "domain": "shortner",
-      "routeBasePath": "/shorten"
+      "routeBasePath": "api/shorten"
+    },
+    {
+      "domain": "click",
+      "routeBasePath": "/"
     }
   ],
   "customMiddlewares": null

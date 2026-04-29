@@ -1,7 +1,7 @@
 import { ApiConfig } from '@/config/api.config';
 import { ApiError, ApiErrorCode } from '@/errors';
 import { LinkRepository } from '@/repositories/link.repository';
-import { ShortenUrlInterface } from '@/types/shorten-url.types';
+import { ShortenUrlInterface } from '@/types/link.types';
 import { customAlphabet } from 'nanoid';
 
 export class ShortenUrlService {
