@@ -16,4 +16,7 @@ export type ApiErrorKey =
   | 'resource/not-found'
 
   // Servie
-  | 'link/code-generation-failed';
+  | 'link/code-generation-failed'
+
+  // cache
+  | 'cache/failed';

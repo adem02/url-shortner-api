@@ -35,6 +35,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "geoip-lite": "^1.4.10",
     "ioredis": "^5.10.1",
     "module-alias": "^2.3.4",
     "nanoid": "^5.1.9",
@@ -42,12 +43,14 @@
     "pino": "^10.3.1",
     "pino-http": "^11.0.0",
     "typeorm": "^0.3.28",
+    "ua-parser-js": "^2.0.9",
     "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/geoip-lite": "^1.4.4",
     "@types/node": "^25.6.0",
     "@types/uuid": "^11.0.0",
     "eslint": "^10.2.1",

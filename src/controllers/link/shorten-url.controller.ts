@@ -1,10 +1,10 @@
 import { linkRepository } from '@/repositories/link.repository';
 import { ShortenUrlService } from '@/services/shorten-url.service';
 import { UrlValidator } from '@/services/validator/url-validator';
-import { ShortenUrlInputDTO, ShortenUrlOutputDTO } from '@/types/shorten-url.types';
+import { ShortenUrlInputDTO, ShortenUrlOutputDTO } from '@/types/link.types';
 import { Request, Response, NextFunction } from 'express';
 
-export const ShortenUrlController = async (
+export const ShortenLinkController = async (
   req: Request<ShortenUrlInputDTO>,
   res: Response<ShortenUrlOutputDTO>,
   next: NextFunction,
