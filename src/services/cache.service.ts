@@ -13,7 +13,7 @@ export class CacheService {
 
   async getCacheByCode(code: string): Promise<string | null> {
     try {
-      return this.redisClient.get(code);
+      return await this.redisClient.get(code);
     } catch (error) {
       const errMessage = error instanceof Error ? error.message : 'Unexpected error occurred';
 
@@ -29,9 +29,9 @@ export class CacheService {
     }
   }
 
-  async setCacheByCode<T>(code: string, data: T): Promise<void> {
+  async setCacheByCode<T>(code: string, data: T, ttlInSeconds: number = 60): Promise<void> {
     try {
-      this.redisClient.set(code, JSON.stringify(data));
+      await this.redisClient.set(code, JSON.stringify(data), 'EX', ttlInSeconds);
     } catch (error) {
       const errMessage = error instanceof Error ? error.message : 'Unexpected error occurred';
 
@@ -49,7 +49,7 @@ export class CacheService {
 
   async deleteCacheByCode(code: string): Promise<void> {
     try {
-      this.redisClient.del(code);
+      await this.redisClient.del(code);
     } catch (error) {
       const errMessage = error instanceof Error ? error.message : 'Unexpected error occurred';
 
