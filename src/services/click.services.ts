@@ -4,6 +4,7 @@ import { ApiError, ApiErrorCode } from '@/errors';
 import Logger from '@/config/logger.config';
 import { Link } from '@/types/link.types';
 import { ApiConfig } from '@/config/api.config';
+import { CLICK_CODE_CACHE_PREFIX, generateCacheKey } from '@/utils';
 
 export class ClickService {
   constructor(
@@ -12,25 +13,27 @@ export class ClickService {
   ) {}
 
   async getLinkByCode(code: string): Promise<Link> {
-    const cachedUrl = await this.cacheService.getCacheByCode(code);
-    const cachedUrlData = cachedUrl ? (JSON.parse(cachedUrl) as Link) : null;
+    const cacheKey = generateCacheKey(CLICK_CODE_CACHE_PREFIX, code);
+    const cachedLinkData = await this.cacheService.getCacheByCode(cacheKey);
+    const cachedLink = cachedLinkData ? (JSON.parse(cachedLinkData) as Link) : null;
 
-    if (cachedUrlData) {
+    if (cachedLink) {
       if (!ApiConfig.isProduction) {
-        Logger.debug({ code, cachedUrl }, '[CACHE HIT] URL found in cache');
+        Logger.debug({ code, cachedUrl: cachedLinkData }, '[CACHE HIT] URL found in cache');
       }
-      return cachedUrlData;
+      return cachedLink;
     }
 
-    Logger.info({ code }, '[CACHE MISS] URL not found in cache, querying database');
-    const link = await this.linkRepo.findLongUrlByCode(code);
+    if (!ApiConfig.isProduction) {
+      Logger.debug({ code }, '[CACHE MISS] URL not found in cache, querying database');
+    }
+    const link = await this.linkRepo.findLinkByCode(code);
 
     if (!link) {
-      Logger.warn({ code }, '[NOT FOUND] No URL found for code');
       throw new ApiError(ApiErrorCode.NotFound, 'resource/not-found', 'Url not found.');
     }
 
-    await this.cacheService.setCacheByCode(code, link);
+    await this.cacheService.setCacheByCode(cacheKey, link, 86400);
     if (!ApiConfig.isProduction) {
       Logger.info({ code, link }, '[CACHE SET] URL cached');
     }

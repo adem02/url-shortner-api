@@ -52,7 +52,7 @@ export class LinkRepository {
     }
   }
 
-  async findLongUrlByCode(code: string): Promise<LinkType | null> {
+  async findLinkByCode(code: string): Promise<LinkType | null> {
     try {
       const link = await this.linkRepository.findOneBy({ code });
 
