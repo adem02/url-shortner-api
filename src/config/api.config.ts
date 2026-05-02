@@ -26,4 +26,8 @@ export const ApiConfig = {
     url: process.env.REDIS_URL || 'redis://localhost:6379',
   },
   baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+  rateLimit: {
+    windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 3600000,
+    limit: Number(process.env.RATE_LIMIT_MAX) || 20,
+  },
 };

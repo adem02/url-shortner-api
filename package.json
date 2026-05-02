@@ -35,6 +35,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.4.1",
     "geoip-lite": "^1.4.10",
     "ioredis": "^5.10.1",
     "module-alias": "^2.3.4",

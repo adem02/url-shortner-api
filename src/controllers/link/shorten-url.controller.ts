@@ -5,7 +5,7 @@ import { ShortenUrlInputDTO, ShortenUrlOutputDTO } from '@/types/link.types';
 import { Request, Response, NextFunction } from 'express';
 
 export const ShortenLinkController = async (
-  req: Request<ShortenUrlInputDTO>,
+  req: Request<object, object, ShortenUrlInputDTO>,
   res: Response<ShortenUrlOutputDTO>,
   next: NextFunction,
 ): Promise<void> => {
