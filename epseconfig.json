@@ -18,5 +18,9 @@
       "routeBasePath": "/"
     }
   ],
-  "customMiddlewares": null
+  "customMiddlewares": [
+    {
+      "name": "ShortenUrlRateLimitMiddleware"
+    }
+  ]
 }
