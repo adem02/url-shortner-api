@@ -98,7 +98,7 @@ export class ClickRepository {
 
       return rawCountryClicks.map<StatsCountry>(({ country, clicks }) => ({
         country,
-        clicks,
+        clicks: Number(clicks),
         percentage: Math.round((Number(clicks) / total) * 100),
       }));
     } catch (error) {
@@ -135,7 +135,7 @@ export class ClickRepository {
         const m = date.getUTCMinutes().toString().padStart(2, '0');
         const formattedHour = `${h}:${m}`;
 
-        return { hour: formattedHour, clicks };
+        return { hour: formattedHour, clicks: Number(clicks) };
       });
     } catch (error) {
       const errMessage = error instanceof Error ? error.message : 'Unknown error';
