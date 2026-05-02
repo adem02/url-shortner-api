@@ -40,7 +40,7 @@ export class LinkRepository {
     } catch (error) {
       const errMessage = error instanceof Error ? error.message : 'Unknown error';
 
-      if (ApiConfig.isDevMode) {
+      if (!ApiConfig.isProduction) {
         Logger.error(`Failed to find link by code: ${errMessage}`);
       }
 

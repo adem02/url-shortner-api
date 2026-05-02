@@ -4,6 +4,7 @@ dotenv.config();
 export const ApiConfig = {
   isDevMode: process.env.NODE_ENV === 'development',
   isProduction: process.env.NODE_ENV === 'production',
+  isTestMode: process.env.NODE_ENV === 'test',
   port: Number(process.env.PORT) || 3000,
   environment: process.env.NODE_ENV || 'development',
   cors: {
