@@ -13,6 +13,9 @@ const PORT = ApiConfig.port;
     await AppDataSource.initialize();
     Logger.info('Data Source has been initialized!');
 
+    await AppDataSource.runMigrations();
+    Logger.info('Migrations applied successfully');
+
     await connectRedis();
 
     handlerRegistry.forEach(({ type, handler }) => {
