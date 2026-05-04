@@ -8,10 +8,10 @@ export const ShortenUrlRateLimitMiddleware = rateLimit({
   standardHeaders: 'draft-8',
   legacyHeaders: false,
   message: {
-    success: false,
-    error: {
-      code: ApiErrorCode.TooManyRequests,
-      message: 'Too many requests. Limit: 20 links per hour per IP.',
+    code: ApiErrorCode.TooManyRequests,
+    key: 'security/rate-limit-exceeded',
+    message: 'Too many requests. Limit: 20 links per hour per IP.',
+    details: {
       retryAfter: null,
     },
   },
