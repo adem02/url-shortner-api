@@ -40,9 +40,9 @@ export interface StatsCountry {
 
 export interface RecentClick {
   timestamp: string;
-  country: string;
-  device: keyof StatsDevices;
-  browser: string;
+  country: string | null;
+  device: keyof StatsDevices | null;
+  browser: string | null;
 }
 
 export interface GetShortenUrlStatsOutputDTO {

@@ -208,9 +208,10 @@ export class ClickRepository {
       const recentClicks = rawRecentClicks.map<RecentClick>(
         ({ country, device, browser, timestamp }) => ({
           timestamp: timestamp as string,
-          device: device !== 'mobile' && device !== 'tablet' ? 'desktop' : device,
-          country: country as string,
-          browser: browser as string,
+          device:
+            device === 'mobile' || device === 'tablet' ? device : device != null ? 'desktop' : null,
+          country: (country as string | null) ?? null,
+          browser: (browser as string | null) ?? null,
         }),
       );
 
